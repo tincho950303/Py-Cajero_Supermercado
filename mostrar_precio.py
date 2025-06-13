@@ -1,11 +1,7 @@
 """ Python"""
-def ingresar_consulta():
-    ingresar_producto = 'cocina'
-    ingresar_cantidad = 5
-
-def get_price(producto,cantidad):
+def get_price(cantidad,producto):
     producto = producto.capitalize()    
-    productos_data = {
+    productos_data =  {
         'Leche': 20,
         'Whisky': 40,
         'Yerba': 20,
@@ -14,12 +10,15 @@ def get_price(producto,cantidad):
         'Sillon': 120,
         'Bicicleta': 200,
         'Guitarra': 750,
-        'Espia': 2000,
+        'Aspiradora': 2000,
         'Cocina': 600,
         'Heladera': 500
     }
-    subtotal = productos_data[producto]* cantidad
-    resultado = f"{producto}: ${productos_data[producto]} --- x {cantidad} unid. Total ${subtotal}"
+    
+    db_productos = productos_data[producto]
+    db_precio = productos_data[cantidad]
+    
+    subtotal = db_productos * db_precio
+    resultado = f"{producto} || Precio: ${productos_data[producto]} | Unidades: {cantidad} | Total: ${subtotal}"
+    
     return resultado
-
-print(get_price(ingresar_producto,ingresar_cantidad))
